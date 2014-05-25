@@ -5,20 +5,21 @@ namespace DAL.ORM.Repository
 {
     public class FileStore : IFileStore
     {
-        public void Upload(Stream stream, string path)
+        public void Upload(Stream stream, string path, string fileName)
         {
             using (var reader = new StreamReader(stream))
             {
-                using (var writer = new StreamWriter(File.Open(path, FileMode.Create)))
+                using (var writer = new StreamWriter(
+                    File.Open(string.Format(@"{0}\{1}",path, fileName), FileMode.Create)))
                 {
                     writer.Write(reader.ReadToEnd());
                 }
             }           
         }
 
-        public Stream Download(string path)
+        public Stream Download(string path, string fileName)
         {
-            using (var reader = new StreamReader(File.OpenRead(path)))
+            using (var reader = new StreamReader(File.OpenRead((string.Format(@"{0}\{1}",path, fileName)))))
             {
                 return reader.BaseStream;
             }
