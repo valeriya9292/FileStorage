@@ -6,14 +6,14 @@ namespace Interfaces.Repositories
 {
     public interface IFileRepository
     {
-        IEnumerable<FileEntity> FindAll();
-        IEnumerable<FileEntity> FindByOwnerId(Guid ownerId);
-        IEnumerable<FileEntity> FindAvailable(Guid userId);
-        IEnumerable<FileEntity> FindPublic();
+        IEnumerable<DalFile> FindAll();
+        IEnumerable<DalFile> FindByOwnerId(Guid ownerId);
+        IEnumerable<DalFile> FindAvailable(Guid userId);
+        IEnumerable<DalFile> FindPublic();
 
         void Delete(Guid id);
         void DeleteByOwnerId(Guid ownerId);
 
-        void Save(FileEntity file);
+        void Save(DalFile file);
     }
 }

@@ -1,17 +1,16 @@
 ﻿using System.Data.Entity;
 
-namespace ORM
+namespace ORM.Model
 {
-    class FileStorageDbContext : DbContext
+    public class FileStorageDbContext : DbContext
     {
         public FileStorageDbContext()
             : base("FileStorageDb")
         {
         }
 
-        public DbSet<File> Files { get; set; }
-        public DbSet<Profile> Profiles { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
+        public DbSet<OrmFile> Files { get; set; }
+        public DbSet<OrmUser> Users { get; set; }
+        public DbSet<OrmRole> Roles { get; set; }
     }
 }

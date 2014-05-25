@@ -1,0 +1,14 @@
+D:\Учёба\ASP.NET MVC\FileStorage\DAL.ORM\bin\Debug\DAL.ORM.dll.config
+D:\Учёба\ASP.NET MVC\FileStorage\DAL.ORM\bin\Debug\DAL.ORM.dll
+D:\Учёба\ASP.NET MVC\FileStorage\DAL.ORM\bin\Debug\DAL.ORM.pdb
+D:\Учёба\ASP.NET MVC\FileStorage\DAL.ORM\bin\Debug\EntityFramework.dll
+D:\Учёба\ASP.NET MVC\FileStorage\DAL.ORM\bin\Debug\EntityFramework.SqlServer.dll
+D:\Учёба\ASP.NET MVC\FileStorage\DAL.ORM\bin\Debug\Interfaces.dll
+D:\Учёба\ASP.NET MVC\FileStorage\DAL.ORM\bin\Debug\ORM.dll
+D:\Учёба\ASP.NET MVC\FileStorage\DAL.ORM\bin\Debug\Interfaces.pdb
+D:\Учёба\ASP.NET MVC\FileStorage\DAL.ORM\bin\Debug\ORM.pdb
+D:\Учёба\ASP.NET MVC\FileStorage\DAL.ORM\bin\Debug\EntityFramework.xml
+D:\Учёба\ASP.NET MVC\FileStorage\DAL.ORM\bin\Debug\EntityFramework.SqlServer.xml
+D:\Учёба\ASP.NET MVC\FileStorage\DAL.ORM\obj\Debug\DAL.ORM.csprojResolveAssemblyReference.cache
+D:\Учёба\ASP.NET MVC\FileStorage\DAL.ORM\obj\Debug\DAL.ORM.dll
+D:\Учёба\ASP.NET MVC\FileStorage\DAL.ORM\obj\Debug\DAL.ORM.pdb
