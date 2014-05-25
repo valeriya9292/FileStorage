@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Web;
 using BLL.Convertions;
 using BLL.DomainModel.Entities;
 using Interfaces.Repositories;
@@ -20,34 +19,32 @@ namespace BLL.DomainModel.Services
             this.store = store;
         }
 
-        IEnumerable<FileEntity> FindAllFiles()
+        public IEnumerable<FileEntity> FindAllFiles()
         {
             return repository.FindAll().Select(item => item.ToFileEntity());
         }
-        IEnumerable<FileEntity> FindFilesByOwnerId(Guid ownerId)
+        public IEnumerable<FileEntity> FindFilesByOwnerId(Guid ownerId)
         {
             return repository.FindByOwnerId(ownerId).Select(item => item.ToFileEntity());
         }
-        IEnumerable<FileEntity> FindAvailableFiles(Guid userId)
+        public IEnumerable<FileEntity> FindAvailableFiles(Guid userId)
         {
             return repository.FindAvailable(userId).Select(item => item.ToFileEntity());
         }
-        IEnumerable<FileEntity> FindPublic()
+        public IEnumerable<FileEntity> FindPublic()
         {
             return repository.FindPublic().Select(item => item.ToFileEntity());
         }
 
-        void DeleteFile(Guid id)
+        public void DeleteFile(Guid id)
         {
             repository.Delete(id);
         }
-
-        void DeleteFileByOwnerId(Guid ownerId)
+        public void DeleteFileByOwnerId(Guid ownerId)
         {
             repository.DeleteByOwnerId(ownerId);
         }
-
-        void SaveFile(FileEntity file)
+        public void SaveFile(FileEntity file)
         {
             repository.Save(file.ToDalFile());
             store.Upload(file.Data, file.Path, file.Name);
@@ -63,7 +60,7 @@ namespace BLL.DomainModel.Services
         //}
 
         //NOTE: filePath from Web.config
-        private FileEntity CreateFileEntity(Stream stream, string fileName, bool isPublic, Guid ownerId, int size, string filePath)
+        public FileEntity CreateFileEntity(Stream stream, string fileName, bool isPublic, Guid ownerId, long size, string filePath)
         {
             var file = new FileEntity()
                 {
@@ -72,7 +69,7 @@ namespace BLL.DomainModel.Services
                     Name = fileName,
                     IsPublic = isPublic,
                     OwnerId = ownerId,
-                    Path = null,//string.Format(@"{0}\{1}", filePath, User.Email);
+                    Path = filePath,//string.Format(@"{0}\{1}", filePath, User.Email);
                     Size = size,
                     UploadDate = DateTime.Now
                 };

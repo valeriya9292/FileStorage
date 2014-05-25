@@ -16,15 +16,15 @@ namespace BLL.DomainModel.Services
             this.repository = repository;
         }
         
-        IEnumerable<UserEntity> FindAllUsers()
+        public IEnumerable<UserEntity> FindAllUsers()
         {
             return repository.FindAll().Select(item => item.ToUserEntity()).ToList();
         }
-        void DeleteUser(Guid id)
+        public void DeleteUser(Guid id)
         {
             repository.Delete(id);
         }
-        void SaveUser(UserEntity user)
+        public void SaveUser(UserEntity user)
         {
             repository.Save(user.ToDalUser());
         }

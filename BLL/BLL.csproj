@@ -45,6 +45,7 @@
     <Compile Include="DomainModel\Entities\RoleEntity.cs" />
     <Compile Include="DomainModel\Entities\UserEntity.cs" />
     <Compile Include="DomainModel\Services\FileService.cs" />
+    <Compile Include="DomainModel\Services\RoleService.cs" />
     <Compile Include="DomainModel\Services\UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

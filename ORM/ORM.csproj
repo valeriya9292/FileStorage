@@ -46,6 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201405251353211_InitialCreate.cs" />
+    <Compile Include="Migrations\201405251353211_InitialCreate.Designer.cs">
+      <DependentUpon>201405251353211_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405251443495_ChangedTypeOfSizeField.cs" />
+    <Compile Include="Migrations\201405251443495_ChangedTypeOfSizeField.Designer.cs">
+      <DependentUpon>201405251443495_ChangedTypeOfSizeField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\OrmFile.cs" />
     <Compile Include="Model\FileStorageDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,6 +64,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201405251353211_InitialCreate.resx">
+      <DependentUpon>201405251353211_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405251443495_ChangedTypeOfSizeField.resx">
+      <DependentUpon>201405251443495_ChangedTypeOfSizeField.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
