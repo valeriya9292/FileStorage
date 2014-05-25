@@ -1,9 +1,8 @@
 ﻿namespace Interfaces.Entities
 {
-    public enum Role
+    public class Role
     {
-        User,
-        Admin,
-        Anonym
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
