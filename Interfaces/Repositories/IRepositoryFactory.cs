@@ -2,7 +2,7 @@
 {
     public interface IRepositoryFactory
     {
-        IFileRepository FileRepository { get; }
-        IUserRepository UserRepository { get; }
+        IFileRepository CreateFileRepository();
+        IUserRepository CreateUserRepository();
     }
 }

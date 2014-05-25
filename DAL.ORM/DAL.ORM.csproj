@@ -50,6 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\FileRepository.cs" />
     <Compile Include="Repository\FileStore.cs" />
+    <Compile Include="Repository\RepositoryFactory.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
