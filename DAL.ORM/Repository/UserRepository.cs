@@ -10,19 +10,19 @@ namespace DAL.ORM.Repository
 {
     public class UserRepository : IUserRepository
     {
-        private readonly FileStorageDbContext context = new FileStorageDbContext();
-
         public IEnumerable<DalUser> FindAll()
         {
-            using (context)
+            IEnumerable<DalUser> users;
+            using (var context = new FileStorageDbContext())
             {
-                return context.Users.AsEnumerable().Select(elem => elem.ToDalUser()).ToList();
+                users = context.Users.AsEnumerable().Select(elem => elem.ToDalUser()).ToList();
             }
+            return users;
         }
 
         public void Delete(Guid id)
         {
-            using (context)
+            using (var context = new FileStorageDbContext())
             {
                 var user = context.Users.FirstOrDefault(u => u.Id == id);
                 if (user == null) return;
@@ -33,7 +33,7 @@ namespace DAL.ORM.Repository
 
         public void Save(DalUser user)
         {
-            using (context)
+            using (var context = new FileStorageDbContext())
             {
                 context.Users.Add(user.ToOrmUser());
                 context.SaveChanges();

@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using DAL.ORM.Convertions;
 using Interfaces.Entities;
 using Interfaces.Repositories;
 using ORM.Model;
@@ -7,11 +9,18 @@ namespace DAL.ORM.Repository
 {
     public class RoleRepository: IRoleRepository
     {
-        private readonly FileStorageDbContext context = new FileStorageDbContext();
+
+        public IEnumerable<DalRole> FindAll()
+        {
+            using (var context = new FileStorageDbContext())
+            {
+                return context.Roles.AsEnumerable().Select(elem => elem.ToDalRole()).ToList(); ;
+            }
+        }
 
         public void Save(IEnumerable<DalRole> roles)
         {
-            using (context)
+            using (var context = new FileStorageDbContext())
             {
                 foreach (var dalRole in roles)
                 {

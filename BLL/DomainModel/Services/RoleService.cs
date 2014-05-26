@@ -14,7 +14,10 @@ namespace BLL.DomainModel.Services
         {
             this.repository = repository;
         }
-
+        public IEnumerable<RoleEntity> FindAllRoles()
+        {
+            return repository.FindAll().AsEnumerable().Select(item => new RoleEntity(){Id = item.Id, Name = item.Name});
+        }
         public void SaveRoles(IEnumerable<RoleEntity> roles)
         {
             repository.Save(roles.Select(item => new DalRole(){Id = item.Id, Name = item.Name}));

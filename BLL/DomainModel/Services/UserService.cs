@@ -18,7 +18,7 @@ namespace BLL.DomainModel.Services
         
         public IEnumerable<UserEntity> FindAllUsers()
         {
-            return repository.FindAll().Select(item => item.ToUserEntity()).ToList();
+            return repository.FindAll().Select(item => item.ToUserEntity());
         }
         public void DeleteUser(Guid id)
         {

@@ -11,6 +11,7 @@ namespace DI.Infrastructure
             Bind<IUserRepository>().To<UserRepository>();
             Bind<IFileRepository>().To<FileRepository>();
             Bind<IFileStore>().To<FileStore>();
+            Bind<IRoleRepository>().To<RoleRepository>();
         }
     }
 }

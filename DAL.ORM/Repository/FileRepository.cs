@@ -10,11 +10,10 @@ namespace DAL.ORM.Repository
 {
     public class FileRepository : IFileRepository
     {
-        private readonly FileStorageDbContext context = new FileStorageDbContext();
 
         public IEnumerable<DalFile> FindAll()
         {
-            using (context)
+            using (var context = new FileStorageDbContext())
             {
                 return context.Files.AsEnumerable().Select(elem => elem.ToDalFile()).ToList();
             }
@@ -22,7 +21,7 @@ namespace DAL.ORM.Repository
 
         public IEnumerable<DalFile> FindByOwnerId(Guid ownerId)
         {
-            using (context)
+            using (var context = new FileStorageDbContext())
             {
                 return context.Files.AsEnumerable()
                     .Where(elem => elem.ToDalFile().OwnerId == ownerId)
@@ -32,7 +31,7 @@ namespace DAL.ORM.Repository
 
         public IEnumerable<DalFile> FindAvailable(Guid userId)
         {
-            using (context)
+            using (var context = new FileStorageDbContext())
             {
                 return context.Files.AsEnumerable()
                     .Where(elem => elem.ToDalFile().OwnerId == userId || elem.ToDalFile().IsPublic)
@@ -42,7 +41,7 @@ namespace DAL.ORM.Repository
 
         public IEnumerable<DalFile> FindPublic()
         {
-            using (context)
+            using (var context = new FileStorageDbContext())
             {
                 return context.Files.AsEnumerable()
                     .Where(elem => elem.ToDalFile().IsPublic)
@@ -52,7 +51,7 @@ namespace DAL.ORM.Repository
 
         public void Delete(Guid id)
         {
-            using (context)
+            using (var context = new FileStorageDbContext())
             {
                 var file = context.Files.FirstOrDefault(f => f.Id == id);
                 if (file == null) return;
@@ -63,7 +62,7 @@ namespace DAL.ORM.Repository
 
         public void DeleteByOwnerId(Guid ownerId)
         {
-            using (context)
+            using (var context = new FileStorageDbContext())
             {
                 var files = context.Files
                     .Where(elem => elem.OwnerId == ownerId)
@@ -78,7 +77,7 @@ namespace DAL.ORM.Repository
 
         public void Save(DalFile file)
         {
-            using (context)
+            using (var context = new FileStorageDbContext())
             {
                 context.Files.Add(file.ToOrmFile());
                 context.SaveChanges();

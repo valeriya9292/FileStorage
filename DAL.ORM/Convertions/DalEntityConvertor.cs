@@ -56,6 +56,24 @@ namespace DAL.ORM.Convertions
                     RoleId = ormUser.RoleId
                 };
         }
+
+        public static DalRole ToDalRole(this OrmRole ormRole)
+        {
+            return new DalRole()
+            {
+                Id = ormRole.Id,
+                Name = ormRole.Name
+            };
+        }
+
+        public static DalRole ToOrmRole(this DalRole dalRole)
+        {
+            return new DalRole()
+            {
+                Id = dalRole.Id,
+                Name = dalRole.Name
+            };
+        }
     }
 }
 
