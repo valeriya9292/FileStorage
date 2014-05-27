@@ -4,8 +4,6 @@
     ViewBag.Title = "Register";
 }
 
-<h2>Register</h2>
-
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -46,7 +44,7 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Create" class="css-button"/>
         </p>
     </fieldset>
 }

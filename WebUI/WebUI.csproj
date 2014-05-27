@@ -232,6 +232,11 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Hello.cshtml" />
+    <Content Include="Views\Shared\Header.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Shared\Navigation\Navigation_User.cshtml" />
+    <Content Include="Views\Shared\Navigation\Navigation_Admin.cshtml" />
+    <Content Include="Views\Shared\Navigation\Navigation_Anonym.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

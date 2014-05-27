@@ -19,7 +19,6 @@ namespace WebUI.Controllers
         {
             var a = HttpContext.User.IsInRole("User");
             return View(Request.RequestContext.HttpContext.User);
-            var aa = Roles.IsUserInRole("User");
         }
         public ActionResult Login()
         {

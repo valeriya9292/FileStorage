@@ -1,61 +1,146 @@
-﻿body {
+﻿html
+{
+    height: 100%;
+}
+
+body
+{
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     color: #232323;
-    background-color: #fff;
+    background-color: rgb(250, 250, 250);
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
-header, footer, nav, section {
+header, footer, nav, section
+{
     display: block;
 }
 
+header
+{
+    background-color: #FFE;
+    border-bottom: 2px solid rgb(189, 154, 115);
+    height: 100px;
+}
 
+
+footer
+{
+    background-color: rgb(173, 182, 148);
+    font-size: .8em;
+    text-align: center;
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
 /* Styles for basic forms
 -----------------------------------------------------------*/
-fieldset {
+fieldset
+{
     border: 1px solid #ddd;
     padding: 0 1.4em 1.4em 1.4em;
     margin: 0 0 1.5em 0;
 }
 
-legend {
+legend
+{
     font-size: 1.2em;
     font-weight: bold;
 }
 
-textarea {
+textarea
+{
     min-height: 75px;
 }
 
-.editor-label {
+.editor-label
+{
     margin: 1em 0 0 0;
 }
 
-.editor-field {
+.editor-field
+{
     margin: 0.5em 0 0 0;
 }
 
+.css-button {
+    background-color: rgb(189, 125, 74);
+    vertical-align: middle;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    width: 92px;
+    height: 30px;
+    font-size: 18px;
+    border: 2px outset buttonface;
+}
 
 /* Styles for validation helpers
 -----------------------------------------------------------*/
-.field-validation-error {
+.field-validation-error
+{
     color: #f00;
 }
 
-.field-validation-valid {
+.field-validation-valid
+{
     display: none;
 }
 
-.input-validation-error {
+.input-validation-error
+{
     border: 1px solid #f00;
     background-color: #fee;
 }
 
-.validation-summary-errors {
+.validation-summary-errors
+{
     font-weight: bold;
     color: #f00;
 }
 
-.validation-summary-valid {
+.validation-summary-valid
+{
     display: none;
+}
+
+.css-logo
+{
+    position: absolute;
+    left: 100px;
+    top: 15px;
+    height: 80px;
+}
+
+.css-logout-link
+{
+    right: 100px;
+    position: absolute;
+    top: 60px;
+}
+
+.css-content
+{
+    padding: 10px;
+    padding-bottom: 100px;
+}
+
+.css-wrapper
+{
+    min-height: 100%;
+    position: relative;
+}
+/* Styles for navigation
+-----------------------------------------------------------*/
+ul#menu li
+{
+    display: inline;
+    list-style: none;
+    padding-left: 15px;
 }
