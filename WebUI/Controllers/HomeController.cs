@@ -4,6 +4,7 @@ using BLL.DomainModel.Services;
 
 namespace WebUI.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly FileService service;

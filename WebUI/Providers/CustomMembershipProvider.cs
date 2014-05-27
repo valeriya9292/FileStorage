@@ -37,7 +37,7 @@ namespace WebUI.Providers
                 };
 
             var role = (from r in roleService.FindAllRoles()
-                        where r.Name == "user"
+                        where r.Name == "User"//NOTE: enum
                         select r).FirstOrDefault();
 
             if (role != null)

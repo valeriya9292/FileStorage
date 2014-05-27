@@ -7,6 +7,7 @@ using WebUI.Providers;
 
 namespace WebUI.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private readonly UserService service;
@@ -16,7 +17,9 @@ namespace WebUI.Controllers
         }
         public ActionResult Hello()
         {
+            var a = HttpContext.User.IsInRole("User");
             return View(Request.RequestContext.HttpContext.User);
+            var aa = Roles.IsUserInRole("User");
         }
         public ActionResult Login()
         {
@@ -43,7 +46,7 @@ namespace WebUI.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Неправильный пароль или логин");
+                    ModelState.AddModelError("", "Incorrect email or password");
                 }
             }
             return View(viewModel);
@@ -73,13 +76,13 @@ namespace WebUI.Controllers
             var anyUser = service.FindAllUsers().Any(u => u.Email.Contains(viewModel.Email));
             if (anyUser)
             {
-                ModelState.AddModelError("Email", "Пользователь с таким адресом уже зарегистрирован");
+                ModelState.AddModelError("Email", "User with this address is already exists");
                 return View(viewModel);
             }
 
             if (ModelState.IsValid)
             {
-                MembershipUser membershipUser = ((CustomMembershipProvider) Membership.Provider)
+                var membershipUser = ((CustomMembershipProvider) Membership.Provider)
                                                     .CreateUser(viewModel.Email, viewModel.Password);
 
                 if (membershipUser != null)
@@ -89,7 +92,7 @@ namespace WebUI.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Ошибка при регистрации");
+                    ModelState.AddModelError("", "Registration error");
                 }
             }
             return View(viewModel);

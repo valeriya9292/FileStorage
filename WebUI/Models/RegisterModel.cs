@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace WebUI.Models
@@ -12,29 +8,24 @@ namespace WebUI.Models
         [ScaffoldColumn(false)]
         public int Id { get; set; }
 
-        [Display(Name = "Введите email")]
-        [Required(ErrorMessage = "Поле обязательно для заполнения")]
-        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Некорректный email")]
+        [Display(Name = "Enter email")]
+        [Required(ErrorMessage = "Email is required")]
+        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Email is not correct")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Введите пароль")]
-        [StringLength(100, ErrorMessage = "Пароль должен содержать по крайней мере {2} символов.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Enter password")]
+        [StringLength(100, ErrorMessage = "The password must contain at least {2} characters", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Введите пароль")]
+        [Display(Name = "Enter password")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Подтвердите пароль")]
+        [Required(ErrorMessage = "Confirm password")]
         [DataType(DataType.Password)]
-        [Display(Name = "Подтвердите пароль")]
-        [Compare("Password", ErrorMessage = "Пароли должны совпадать.")]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "Passwords must match")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Captch is required")]
         public string Captcha { get; set; }
-
-        [DataType(DataType.Date)]
-        public DateTime AddedDate { get; set; }
-
-        public string AvatarPath { get; set; }
     }
 }
