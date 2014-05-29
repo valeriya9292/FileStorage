@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "LoadFiles";
+}
+
+@using (Html.BeginForm("LoadFiles", "File", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset>
+        <legend>Load File:</legend>
+        <div>
+            <label for="file">Select File:</label>
+            <input name="file" type="file" />
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <textarea name="description"></textarea>
+        </div>
+        <div>
+            <fieldset>
+                <legend>Access</legend>
+                <div>
+                    <input name="isPrivate" type="checkbox" />
+                    <label for="isPrivate">Private</label>
+                </div>
+                <div>
+                    <input name="isPublic" type="checkbox" />
+                    <label for="isPublic">Public</label>
+                </div>
+            </fieldset>
+        </div>
+        <input type="submit" value="Load" />
+    </fieldset>
+}

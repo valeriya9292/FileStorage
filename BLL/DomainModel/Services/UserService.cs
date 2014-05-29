@@ -20,6 +20,11 @@ namespace BLL.DomainModel.Services
         {
             return repository.FindAll().Select(item => item.ToUserEntity());
         }
+        public UserEntity FindUserByEmail(string email)
+        {
+            return repository.FindAll().Where(item => item.Email.Equals(email))
+                .Select(item => item.ToUserEntity()).First();
+        }
         public void DeleteUser(Guid id)
         {
             repository.Delete(id);

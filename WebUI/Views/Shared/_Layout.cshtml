@@ -10,8 +10,7 @@
 <body>
     <div class="css-wrapper">
         @RenderPage("Header.cshtml")
-        @RenderPage(string.Format("Navigation\\Navigation_{0}.cshtml", 
-                                  Roles.GetRolesForUser(User.Identity.Name).FirstOrDefault() ?? "Anonym"));
+        @RenderPage(string.Format("Navigation\\Navigation_{0}.cshtml",Roles.GetRolesForUser(User.Identity.Name).FirstOrDefault() ?? "Anonym"))
         <div class="css-content">
             @RenderBody()
         </div>

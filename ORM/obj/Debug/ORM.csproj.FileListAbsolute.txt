@@ -5,7 +5,6 @@ D:\Учёба\ASP.NET MVC\FileStorage\ORM\bin\Debug\EntityFramework.dll
 D:\Учёба\ASP.NET MVC\FileStorage\ORM\bin\Debug\EntityFramework.SqlServer.dll
 D:\Учёба\ASP.NET MVC\FileStorage\ORM\bin\Debug\EntityFramework.xml
 D:\Учёба\ASP.NET MVC\FileStorage\ORM\bin\Debug\EntityFramework.SqlServer.xml
-D:\Учёба\ASP.NET MVC\FileStorage\ORM\obj\Debug\ORM.csprojResolveAssemblyReference.cache
 D:\Учёба\ASP.NET MVC\FileStorage\ORM\obj\Debug\ORM.Migrations.InitialCreate.resources
 D:\Учёба\ASP.NET MVC\FileStorage\ORM\obj\Debug\ORM.Migrations.ChangedTypeOfSizeField.resources
 D:\Учёба\ASP.NET MVC\FileStorage\ORM\obj\Debug\ORM.csproj.GenerateResource.Cache

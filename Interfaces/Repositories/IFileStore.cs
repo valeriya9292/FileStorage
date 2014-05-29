@@ -1,10 +1,8 @@
-﻿using System.IO;
-
-namespace Interfaces.Repositories
+﻿namespace Interfaces.Repositories
 {
     public interface IFileStore
     {
-        void Upload(Stream stream, string path, string fileName);
-        Stream Download(string path, string fileName);
+        void Upload(byte[]fileBuffer, string path, string fileName);
+        byte[] Download(string path, string fileName);
     }
 }

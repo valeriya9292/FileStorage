@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 
 namespace BLL.DomainModel.Entities
 {
@@ -12,6 +11,6 @@ namespace BLL.DomainModel.Entities
         public bool IsPublic { get; set; }
         public Guid OwnerId { get; set; }
         public DateTime UploadDate { get; set; }
-        public Stream Data { get; set; }
+        public byte[] Data { get; set; }
     }
 }

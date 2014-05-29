@@ -31,7 +31,7 @@ namespace ConsoleApp
                     CreationDate = DateTime.Now,
                     Email = "testUser@emal.com",
                     Password = "123",
-                    RoleId = 2
+                    RoleId = 1
                 };
 
             //var userService = new UserService(new UserRepository());
@@ -39,7 +39,7 @@ namespace ConsoleApp
 
             var fileService = new FileService(new FileRepository(), new FileStore());
 
-            var fileStream = File.OpenRead(string.Format(@"{0}\{1}", pathOnClient, fileName));
+            var fileStream = File.ReadAllBytes(string.Format(@"{0}\{1}", pathOnClient, fileName));
 
             var file = fileService.CreateFileEntity(
                 fileStream, fileName, true,new Guid(), fileStream.Length, pathOnServer);

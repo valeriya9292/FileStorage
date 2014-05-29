@@ -134,6 +134,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -237,6 +238,11 @@
     <Content Include="Views\Shared\Navigation\Navigation_User.cshtml" />
     <Content Include="Views\Shared\Navigation\Navigation_Admin.cshtml" />
     <Content Include="Views\Shared\Navigation\Navigation_Anonym.cshtml" />
+    <Content Include="Views\File\GetPublicFiles.cshtml" />
+    <Content Include="Views\File\Search.cshtml" />
+    <Content Include="Views\File\GetMyFiles.cshtml" />
+    <Content Include="Views\File\LoadFiles.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

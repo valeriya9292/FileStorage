@@ -27,15 +27,17 @@ namespace BLL.DomainModel.Services
         {
             return repository.FindByOwnerId(ownerId).Select(item => item.ToFileEntity());
         }
-        public IEnumerable<FileEntity> FindAvailableFiles(Guid userId)
-        {
-            return repository.FindAvailable(userId).Select(item => item.ToFileEntity());
-        }
-        public IEnumerable<FileEntity> FindPublic()
+
+        public IEnumerable<FileEntity> FindPublicFiles()
         {
             return repository.FindPublic().Select(item => item.ToFileEntity());
         }
 
+        public IEnumerable<FileEntity> FindPublicFilesByName(string fileName)
+        {
+            return repository.FindPublic().Where(item => item.Name.Contains(fileName))
+                .Select(item => item.ToFileEntity());
+        }
         public void DeleteFile(Guid id)
         {
             repository.Delete(id);
@@ -49,18 +51,14 @@ namespace BLL.DomainModel.Services
             repository.Save(file.ToDalFile());
             store.Upload(file.Data, file.Path, file.Name);
         }
-        
-        //void Upload(Stream stream, string path)
-        //{
-            
-        //}
-        //Stream Download(string path)
-        //{
 
-        //}
+        public byte[] Download(string path, string fileName)
+        {
+            return store.Download(path, fileName);
+        }
 
         //NOTE: filePath from Web.config
-        public FileEntity CreateFileEntity(Stream stream, string fileName, bool isPublic, Guid ownerId, long size, string filePath)
+        public FileEntity CreateFileEntity(byte[] stream, string fileName, bool isPublic, Guid ownerId, long size, string filePath = @"D:\test\out")
         {
             var file = new FileEntity()
                 {
