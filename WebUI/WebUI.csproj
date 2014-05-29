@@ -203,6 +203,11 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\banner.jpg" />
+    <Content Include="Images\body_bottom.png" />
+    <Content Include="Images\body_top.jpg" />
+    <Content Include="Images\logout.png" />
+    <Content Include="Images\menu_hover.png" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

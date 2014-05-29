@@ -1,4 +1,8 @@
 ﻿<header>
-    <img class="css-logo" alt="Logo" src="" runat="server" />
-    <a class="css-logout-link css-button" href='@Url.Content("~/Account/LogOff")'>Logout</a>
+    <div class="css-title">
+        <a href="@Url.Content("~/Home/About")">Company
+            <span>The web site!!!</span>
+        </a>
+    </div>
+    @RenderPage(string.Format("Navigation\\Navigation_{0}.cshtml", Roles.GetRolesForUser(User.Identity.Name).FirstOrDefault() ?? "Anonym"))
 </header>
