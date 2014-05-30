@@ -7,23 +7,21 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-    <body>
-        <div>
-            <div class="css-wrapper">
-            @RenderPage("Header.cshtml")
-            <div class="css-banner">
-                <div class="css-logout css-float_r">
-                    <a href='@Url.Content("~/Account/LogOff")'>Logout</a>
-                </div>
+<body>
+    <div class="css-wrapper">
+        @RenderPage("Header.cshtml")
+        <div class="css-banner">
+            <div class="css-logout css-float_r">
+                <a href='@Url.Content("~/Account/LogOff")'>Logout</a>
             </div>
-            <div class="css-content">
-                @RenderBody()
-            </div>
-            @RenderPage("Footer.cshtml")
         </div>
+        <div class="css-content">
+            @RenderBody()
+        </div>
+        @RenderPage("Footer.cshtml")
+    </div>
 
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
-        </div>       
-    </body>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
 </html>

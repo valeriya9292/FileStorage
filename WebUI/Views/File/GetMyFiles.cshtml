@@ -38,8 +38,8 @@
                 @Html.DisplayFor(modelItem => item.UploadDate)
             </td>
             <td>
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                @Html.ActionLink("Load", "Download", new { path = item.Path, name = item.Name })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "css-button"})
+                @Html.ActionLink("Load", "Download", new { path = item.Path, name = item.Name }, new { @class = "css-button" })
             </td>
         </tr>
     }
