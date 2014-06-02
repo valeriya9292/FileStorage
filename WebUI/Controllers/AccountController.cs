@@ -1,7 +1,10 @@
-﻿using System.Linq;
+﻿using System.Drawing;
+using System.Drawing.Imaging;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using BLL.DomainModel.Services;
+using WebUI.Infrastructure;
 using WebUI.Models;
 using WebUI.Providers;
 
@@ -15,11 +18,6 @@ namespace WebUI.Controllers
         {
             this.service = service;
         }
-        public ActionResult Hello()
-        {
-            var a = HttpContext.User.IsInRole("User");
-            return View(Request.RequestContext.HttpContext.User);
-        }
         public ActionResult Login()
         {
             return View();
@@ -30,7 +28,7 @@ namespace WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var provider = (CustomMembershipProvider) Membership.Provider;
+                var provider = (CustomMembershipProvider)Membership.Provider;
                 if (provider.ValidateUser(viewModel.Email, viewModel.Password))
                 {
                     FormsAuthentication.SetAuthCookie(viewModel.Email, viewModel.RememberMe);
@@ -38,15 +36,10 @@ namespace WebUI.Controllers
                     {
                         return Redirect(returnUrl);
                     }
-                    else
-                    {
-                        return RedirectToAction("Hello", "Account");
-                    }
+                    return User.IsInRole("User") ? RedirectToAction("GetMyFiles", "File") 
+                        : RedirectToAction("FindAllUsers", "Admin");
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Incorrect email or password");
-                }
+                ModelState.AddModelError("", "Incorrect email or password");
             }
             return View(viewModel);
         }
@@ -66,36 +59,45 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult Register(RegisterModel viewModel)
         {
-            //if (viewModel.Captcha != (string)Session[CaptchaImage.CaptchaValueKey])
-            //{
-            //    ModelState.AddModelError("Captcha", "Текст с картинки введен неверно");
-            //    return View(viewModel);
-            //}
+            if (viewModel.Captcha != (string)Session[Infrastructure.Captcha.CaptchaValueKey])
+            {
+                ModelState.AddModelError("Captcha", "Text from picture is not correct");
+                return View(viewModel);
+            }
 
             var anyUser = service.FindAllUsers().Any(u => u.Email.Contains(viewModel.Email));
             if (anyUser)
             {
-                ModelState.AddModelError("Email", "User with this address is already exists");
+                ModelState.AddModelError("Email", "User with this address already exists");
                 return View(viewModel);
             }
 
             if (ModelState.IsValid)
             {
-                var membershipUser = ((CustomMembershipProvider) Membership.Provider)
+                var membershipUser = ((CustomMembershipProvider)Membership.Provider)
                                                     .CreateUser(viewModel.Email, viewModel.Password);
 
                 if (membershipUser != null)
                 {
                     FormsAuthentication.SetAuthCookie(viewModel.Email, false);
-                    return RedirectToAction("Hello", "Account");
+                    return RedirectToAction("GetPublicFiles", "File");
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Registration error");
-                }
+                ModelState.AddModelError("", "Registration error");
             }
             return View(viewModel);
         }
 
+        public ActionResult Captcha()
+        {
+            Session[Infrastructure.Captcha.CaptchaValueKey] = RandomUtil.GetRandomString(4);
+            var captcha = new Captcha(Session[Infrastructure.Captcha.CaptchaValueKey].ToString(), 250, 100,
+                FontFamily.Families.ElementAt(/*RandomUtil.GetRandomInt(FontFamily.Families.Length - 1)*/1).Name);
+
+            Response.Clear();
+            Response.ContentType = "image/jpeg";
+            captcha.Image.Save(Response.OutputStream, ImageFormat.Jpeg);
+            captcha.Dispose();
+            return null;
+        }
     }
 }

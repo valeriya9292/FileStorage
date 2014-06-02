@@ -6,7 +6,7 @@ using BLL.DomainModel.Services;
 
 namespace WebUI.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "User")]
     public class FileController : Controller
     {
         private readonly FileService fileService;
@@ -33,6 +33,11 @@ namespace WebUI.Controllers
             var fileBytes = fileService.Download(path, name);
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, name);
         }
+        [HttpPost]
+        public void Delete(Guid id)
+        {
+            fileService.DeleteFile(id);
+        }
         [HttpGet]
         public ActionResult LoadFiles()
         {
@@ -45,7 +50,7 @@ namespace WebUI.Controllers
             {
                 var fileName = Path.GetFileName(file.FileName);
                 var contentLength = file.ContentLength;
-               // var contentType = file.ContentType;
+                // var contentType = file.ContentType;
 
                 var data = new byte[] { };
                 using (var binaryReader = new BinaryReader(file.InputStream))
@@ -57,12 +62,21 @@ namespace WebUI.Controllers
                 fileService.SaveFile(newFile);
 
             }
-            return View();
+            return RedirectToAction("GetMyFiles");
         }
 
         public ActionResult FindPublicFilesByName(string fileName)
         {
-            return Json(fileService.FindPublicFilesByName(fileName), JsonRequestBehavior.AllowGet);
+            var files = fileService.FindPublicFilesByName(fileName);
+            return PartialView("PublicFiles/Table/Table", files);
+        }
+
+        public ActionResult FindMyFilesByName(string fileName)
+        {
+
+            var files = fileService.FindFilesByNameAndOwnerId(fileName,
+                userService.FindUserByEmail(User.Identity.Name).Id);
+            return PartialView("MyFiles/Table/Table", files);
         }
     }
 }

@@ -2,7 +2,7 @@
     ViewBag.Title = "LoadFiles";
 }
 
-@using (Html.BeginForm("LoadFiles", "File", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("LoadFiles", "File", FormMethod.Post, new { enctype = "multipart/form-data" , @class = "css-load-form"}))
 {
     <fieldset>
         <legend>Load File:</legend>
@@ -12,7 +12,7 @@
         </div>
         <div>
             <label for="description">Description</label>
-            <textarea name="description"></textarea>
+            <textarea name="description" cols="50"></textarea>
         </div>
         <div>
             <fieldset>

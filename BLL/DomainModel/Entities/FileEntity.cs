@@ -12,5 +12,6 @@ namespace BLL.DomainModel.Entities
         public Guid OwnerId { get; set; }
         public DateTime UploadDate { get; set; }
         public byte[] Data { get; set; }
+       // public string Description { get; set; }
     }
 }

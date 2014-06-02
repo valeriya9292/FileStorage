@@ -1,0 +1,8 @@
+﻿@model IEnumerable<BLL.DomainModel.Entities.FileEntity>
+
+<div class="">
+    <table class="">
+        @Html.Partial("PublicFiles/Table/Header", Model)
+        @Html.Partial("PublicFiles/Table/Body", Model)
+    </table>
+</div>

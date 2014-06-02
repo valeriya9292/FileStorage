@@ -1,0 +1,25 @@
+﻿@model IEnumerable<BLL.DomainModel.Entities.FileEntity>
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsPublic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadDate)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "css-button" })
+                @Html.ActionLink("Load", "Download", new { path = item.Path, name = item.Name }, new { @class = "css-button css-orange" })
+            </td>
+        </tr>
+    }
+</tbody>
+

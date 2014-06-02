@@ -134,11 +134,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Captcha.cs" />
+    <Compile Include="Infrastructure\RandomUtil.cs" />
     <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -202,7 +205,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <None Include="Scripts\lib\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\banner.jpg" />
     <Content Include="Images\body_bottom.png" />
     <Content Include="Images\body_top.jpg" />
@@ -210,21 +213,23 @@
     <Content Include="Images\menu_hover.png" />
     <Content Include="Images\secondary_button.jpg" />
     <Content Include="Images\secondary_button1.jpg" />
-    <Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-ui-1.8.24.js" />
-    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\knockout-2.2.0.debug.js" />
-    <Content Include="Scripts\knockout-2.2.0.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\lib\jquery-1.8.2.js" />
+    <Content Include="Scripts\lib\jquery-1.8.2.min.js" />
+    <None Include="Scripts\lib\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\lib\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\lib\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\lib\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\lib\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\lib\jquery.validate.js" />
+    <Content Include="Scripts\lib\jquery.validate.min.js" />
+    <Content Include="Scripts\lib\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\lib\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\lib\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\lib\knockout-2.2.0.js" />
+    <Content Include="Scripts\lib\modernizr-2.6.2.js" />
+    <Content Include="Scripts\lib\_references.js" />
+    <Content Include="Scripts\myFiles.js" />
+    <Content Include="Scripts\publicFiles.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -250,6 +255,13 @@
     <Content Include="Views\File\GetMyFiles.cshtml" />
     <Content Include="Views\File\LoadFiles.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Admin\FindAllUsers.cshtml" />
+    <Content Include="Views\File\PublicFiles\Table\Body.cshtml" />
+    <Content Include="Views\File\PublicFiles\Table\Header.cshtml" />
+    <Content Include="Views\File\PublicFiles\Table\Table.cshtml" />
+    <Content Include="Views\File\MyFiles\Table\Body.cshtml" />
+    <Content Include="Views\File\MyFiles\Table\Header.cshtml" />
+    <Content Include="Views\File\MyFiles\Table\Table.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,7 +4,7 @@
     ViewBag.Title = "Log in";
 }
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "css-form" })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -41,7 +41,7 @@
     </fieldset>
 }
 <div>
-    <a class="css-secondary-button" href='@Url.Content("~/Account/Register")'>Create Account</a>
+    <a class="css-secondary-button css-create-button" href='@Url.Content("~/Account/Register")'>Create Account</a>
 </div>
 
 @section Scripts {

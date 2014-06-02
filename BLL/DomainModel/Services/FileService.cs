@@ -38,6 +38,10 @@ namespace BLL.DomainModel.Services
             return repository.FindPublic().Where(item => item.Name.Contains(fileName))
                 .Select(item => item.ToFileEntity());
         }
+        public IEnumerable<FileEntity> FindFilesByNameAndOwnerId(string fileName, Guid ownerId)
+        {
+            return FindFilesByOwnerId(ownerId).Where(item => item.Name.Contains(fileName));
+        }
         public void DeleteFile(Guid id)
         {
             repository.Delete(id);
