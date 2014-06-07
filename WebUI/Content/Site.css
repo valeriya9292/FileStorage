@@ -292,27 +292,43 @@ textarea
     position: absolute;
     right: 0;
 }
-.css-search-input-field {
-    display: inline-block;
-}
-.css-search-button {
+
+.css-search-input-field
+{
     display: inline-block;
 }
 
-table {
+.css-search-button
+{
+    display: inline-block;
+}
+
+table
+{
     width: 80%;
     margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
 }
-td:last-child {
+
+td:last-child
+{
     display: inline-flex;
 }
-.css-orange {
+
+.css-orange
+{
     background: url(../Images/secondary_button1.jpg) no-repeat;
 }
 
-.css-load-form {
+.css-load-form
+{
     margin: 0 auto;
     width: 500px;
+}
+
+.css-file-access
+{
+    width: 100px;
+    margin-top: 15px;
 }

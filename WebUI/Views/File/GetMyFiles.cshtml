@@ -8,6 +8,12 @@
 <div class="js-table">
     @Html.Partial("MyFiles/Table/Table")
 </div>
+@section styles
+{
+    @Styles.Render("~/Content/themes/base/css")
+    @Styles.Render("~/Content/dialog.css")
+}
 @section Scripts {
-    <script src="@Url.Content("~/Scripts/myFiles.js")"></script>
+    @Scripts.Render("~/Scripts/application/myFiles.js")
+    @Scripts.Render("~/bundles/file")
 }

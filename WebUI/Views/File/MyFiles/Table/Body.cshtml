@@ -3,6 +3,7 @@
     @foreach (var item in Model)
     {
         <tr>
+            @Html.HiddenFor(modelItem => item.Id)
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -16,7 +17,7 @@
                 @Html.DisplayFor(modelItem => item.UploadDate)
             </td>
             <td>
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "css-button" })
+                <a class = "css-button js-delete-button" onclick="controller.confirm(this);">Delete</a>
                 @Html.ActionLink("Load", "Download", new { path = item.Path, name = item.Name }, new { @class = "css-button css-orange" })
             </td>
         </tr>

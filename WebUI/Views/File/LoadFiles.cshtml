@@ -2,7 +2,7 @@
     ViewBag.Title = "LoadFiles";
 }
 
-@using (Html.BeginForm("LoadFiles", "File", FormMethod.Post, new { enctype = "multipart/form-data" , @class = "css-load-form"}))
+@using (Html.BeginForm("LoadFiles", "File", FormMethod.Post, new { enctype = "multipart/form-data", @class = "css-load-form" }))
 {
     <fieldset>
         <legend>Load File:</legend>
@@ -18,15 +18,17 @@
             <fieldset>
                 <legend>Access</legend>
                 <div>
-                    <input name="isPrivate" type="checkbox" />
-                    <label for="isPrivate">Private</label>
-                </div>
-                <div>
-                    <input name="isPublic" type="checkbox" />
-                    <label for="isPublic">Public</label>
+                    <select name="isPublic" class="css-file-access">
+                        <option value="true">Public</option>
+                        <option value="false" selected>Private</option>
+                    </select>
                 </div>
             </fieldset>
         </div>
-        <input type="submit" value="Load" class="css-button"/>
+        <input type="submit" value="Load" class="css-button" />
     </fieldset>
+}
+@section Scripts {
+    @Scripts.Render("~/Scripts/application/loadFile.js")
+    @Scripts.Render("~/bundles/file")
 }

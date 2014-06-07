@@ -1,0 +1,12 @@
+﻿/* Dialog styles*/
+.ui-dialog-titlebar
+{
+    background: url(../Images/secondary_button1.jpg);
+    color: white;
+}
+
+.css-doubleBtnDialog .ui-button:first-of-type
+{
+    position: absolute;
+    left: 20px;
+}

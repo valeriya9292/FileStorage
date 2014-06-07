@@ -22,6 +22,13 @@ namespace WebUI
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/lib/modernizr-*"));
+            bundles.Add(new ScriptBundle("~/bundles/file").Include(
+                       "~/Scripts/base.js", 
+                       "~/Scripts/controllers/file.js",
+                       "~/Scripts/model/file.js",
+                       "~/Scripts/model/services/file.js",
+                       "~/Scripts/views/file.js"
+                       ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 

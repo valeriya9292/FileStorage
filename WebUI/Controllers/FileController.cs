@@ -33,10 +33,11 @@ namespace WebUI.Controllers
             var fileBytes = fileService.Download(path, name);
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, name);
         }
-        [HttpPost]
-        public void Delete(Guid id)
+        public ActionResult Delete(Guid id)
         {
-            fileService.DeleteFile(id);
+           // fileService.DeleteFile(id);
+            throw new Exception();
+            return null;
         }
         [HttpGet]
         public ActionResult LoadFiles()
@@ -44,7 +45,7 @@ namespace WebUI.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult LoadFiles(HttpPostedFileBase file, string description, bool? isPublic)
+        public ActionResult LoadFiles(HttpPostedFileBase file, string description, bool isPublic)
         {
             if (file != null && file.ContentLength > 0)
             {
@@ -57,7 +58,7 @@ namespace WebUI.Controllers
                 {
                     data = binaryReader.ReadBytes(file.ContentLength);
                 }
-                var newFile = fileService.CreateFileEntity(data, fileName, isPublic ?? false,
+                var newFile = fileService.CreateFileEntity(data, fileName, isPublic,
                                              userService.FindUserByEmail(User.Identity.Name).Id, contentLength);
                 fileService.SaveFile(newFile);
 
@@ -73,7 +74,6 @@ namespace WebUI.Controllers
 
         public ActionResult FindMyFilesByName(string fileName)
         {
-
             var files = fileService.FindFilesByNameAndOwnerId(fileName,
                 userService.FindUserByEmail(User.Identity.Name).Id);
             return PartialView("MyFiles/Table/Table", files);
