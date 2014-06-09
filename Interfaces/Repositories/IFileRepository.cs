@@ -8,7 +8,6 @@ namespace Interfaces.Repositories
     {
         IEnumerable<DalFile> FindAll();
         IEnumerable<DalFile> FindByOwnerId(Guid ownerId);
-        IEnumerable<DalFile> FindAvailable(Guid userId);
         IEnumerable<DalFile> FindPublic();
 
         void Delete(Guid id);

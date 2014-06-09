@@ -29,16 +29,6 @@ namespace DAL.ORM.Repository
             }
         }
 
-        public IEnumerable<DalFile> FindAvailable(Guid userId)
-        {
-            using (var context = new FileStorageDbContext())
-            {
-                return context.Files.AsEnumerable()
-                    .Where(elem => elem.ToDalFile().OwnerId == userId || elem.ToDalFile().IsPublic)
-                    .Select(elem => elem.ToDalFile()).ToList();
-            }
-        }
-
         public IEnumerable<DalFile> FindPublic()
         {
             using (var context = new FileStorageDbContext())

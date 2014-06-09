@@ -2,7 +2,7 @@
     ViewBag.Title = "LoadFiles";
 }
 
-@using (Html.BeginForm("LoadFiles", "File", FormMethod.Post, new { enctype = "multipart/form-data", @class = "css-load-form" }))
+@using (Html.BeginForm("LoadFiles", "File", FormMethod.Post, new { enctype = "multipart/form-data", @class = "css-load-form js-load-form" }))
 {
     <fieldset>
         <legend>Load File:</legend>
@@ -25,8 +25,14 @@
                 </div>
             </fieldset>
         </div>
-        <input type="submit" value="Load" class="css-button" />
+        <a class="css-button js-load-button">Load</a>
+        <input type="submit" value="Load" class="css-button" style="display: none" />
     </fieldset>
+}
+@section styles
+{
+    @Styles.Render("~/Content/themes/base/css")
+    @Styles.Render("~/Content/dialog.css")
 }
 @section Scripts {
     @Scripts.Render("~/Scripts/application/file.js")

@@ -3,5 +3,7 @@
     model: {
         services:{}
     },
-    views: {}
+    views: {
+        utils:{}
+    }
 };

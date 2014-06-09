@@ -236,6 +236,7 @@
     <Content Include="Scripts\application\file.js" />
     <Content Include="Scripts\model\file.js" />
     <Content Include="Scripts\model\services\file.js" />
+    <Content Include="Scripts\views\utils\dialog.js" />
     <Content Include="Scripts\views\file.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

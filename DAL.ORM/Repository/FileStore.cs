@@ -7,6 +7,9 @@ namespace DAL.ORM.Repository
     {
         public void Upload(byte[] fileBuffer, string path, string fileName)
         {
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
             using (var writer = new StreamWriter(
                 File.Open(string.Format(@"{0}\{1}", path, fileName), FileMode.Create)))
             {

@@ -50,6 +50,10 @@ namespace BLL.DomainModel.Services
         {
             repository.DeleteByOwnerId(ownerId);
         }
+        public bool IsFileExisting(string fileName, Guid ownerId)
+        {
+            return repository.FindByOwnerId(ownerId).Count(item => item.Name.Equals(fileName)) != 0;
+        }
         public void SaveFile(FileEntity file)
         {
             repository.Save(file.ToDalFile());
@@ -62,7 +66,7 @@ namespace BLL.DomainModel.Services
         }
 
         //NOTE: filePath from Web.config
-        public FileEntity CreateFileEntity(byte[] stream, string fileName, bool isPublic, Guid ownerId, long size, string filePath = @"D:\test\out")
+        public FileEntity CreateFileEntity(byte[] stream, string fileName, bool isPublic, Guid ownerId, long size, string filePath /*= @"D:\test\out"*/)
         {
             var file = new FileEntity()
                 {

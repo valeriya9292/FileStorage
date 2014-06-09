@@ -3,8 +3,13 @@
     this._view = view;
 };
 fs.controllers.file.prototype = {
+    checkIfExists: function (fileName) {
+        this._model.checkIfExists(fileName);
+        return this;
+    },
     confirm: function (delBtn) {
-        this._view.showConfirmDialog(delBtn, this.removeFile.bind(this));
+        this._view.showConfirmDeleteDialog(delBtn, this.removeFile.bind(this));
+        return this;
     },
     findFilesByName: function (input) {
         var stringForSearch = $(input).val();
@@ -17,7 +22,4 @@ fs.controllers.file.prototype = {
         this._model.removeFile(fileId);
         return this;
     },
-    showFileSizeError : function(elem) {
-        this._view.showFileSizeError(elem);
-    }
 };

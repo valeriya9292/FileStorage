@@ -11,6 +11,7 @@ namespace WebUI.Controllers
     {
         private readonly FileService fileService;
         private readonly UserService userService;
+        private readonly string filePath = System.Web.Configuration.WebConfigurationManager.AppSettings["filePath"];
 
         public FileController(FileService fileService, UserService userService)
         {
@@ -35,10 +36,16 @@ namespace WebUI.Controllers
         }
         public ActionResult Delete(Guid id)
         {
-            //throw new Exception();
+            throw new Exception();
             fileService.DeleteFile(id);
             return null;
         }
+
+        public bool IsFileExisting(string fileName)
+        {
+            return fileService.IsFileExisting(fileName, userService.FindUserByEmail(User.Identity.Name).Id);
+        }
+
         [HttpGet]
         public ActionResult LoadFiles()
         {
@@ -50,7 +57,7 @@ namespace WebUI.Controllers
 
             try
             {
-                // throw new Exception();
+                //throw new Exception();
                 if (file != null && file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
@@ -64,7 +71,8 @@ namespace WebUI.Controllers
                     }
                     var newFile = fileService.CreateFileEntity(data, fileName, isPublic,
                                                                userService.FindUserByEmail(User.Identity.Name).Id,
-                                                               contentLength);
+                                                               contentLength,
+                                                               filePath + User.Identity.Name);
                     fileService.SaveFile(newFile);
 
                 }

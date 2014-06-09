@@ -27,7 +27,8 @@ namespace WebUI
                        "~/Scripts/controllers/file.js",
                        "~/Scripts/model/file.js",
                        "~/Scripts/model/services/file.js",
-                       "~/Scripts/views/file.js"
+                       "~/Scripts/views/file.js",
+                       "~/Scripts/views/utils/dialog.js"
                        ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
