@@ -26,7 +26,9 @@ fs.views.file.prototype = {
             }
         });
         $('.ui-button:last').focus();
-
+    },
+    showFileSizeError: function(elem) {
+        $("<div>The file size should be less then 50 MB</div>").insertAfter(elem);
     },
     _filesFound: function (data) {
         $(this._container).empty().append(data);

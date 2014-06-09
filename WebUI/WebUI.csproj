@@ -207,14 +207,15 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <None Include="Scripts\lib\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\error.jpg" />
     <Content Include="Images\banner.jpg" />
     <Content Include="Images\body_bottom.png" />
     <Content Include="Images\body_top.jpg" />
     <Content Include="Images\button.png" />
+    <Content Include="Images\error1.jpg" />
     <Content Include="Images\menu_hover.png" />
     <Content Include="Images\secondary_button.jpg" />
     <Content Include="Images\secondary_button1.jpg" />
-    <Content Include="Scripts\application\loadFile.js" />
     <Content Include="Scripts\base.js" />
     <Content Include="Scripts\controllers\file.js" />
     <Content Include="Scripts\lib\jquery-1.8.2.js" />
@@ -232,8 +233,7 @@
     <Content Include="Scripts\lib\knockout-2.2.0.js" />
     <Content Include="Scripts\lib\modernizr-2.6.2.js" />
     <Content Include="Scripts\lib\_references.js" />
-    <Content Include="Scripts\application\myFiles.js" />
-    <Content Include="Scripts\application\publicFiles.js" />
+    <Content Include="Scripts\application\file.js" />
     <Content Include="Scripts\model\file.js" />
     <Content Include="Scripts\model\services\file.js" />
     <Content Include="Scripts\views\file.js" />

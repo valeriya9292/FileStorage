@@ -8,7 +8,7 @@
         <legend>Load File:</legend>
         <div>
             <label for="file">Select File:</label>
-            <input name="file" type="file" />
+            <input id="file" name="file" type="file" class="" />
         </div>
         <div>
             <label for="description">Description</label>
@@ -29,6 +29,7 @@
     </fieldset>
 }
 @section Scripts {
-    @Scripts.Render("~/Scripts/application/loadFile.js")
+    @Scripts.Render("~/Scripts/application/file.js")
     @Scripts.Render("~/bundles/file")
+    @Scripts.Render("~/bundles/jqueryval")
 }

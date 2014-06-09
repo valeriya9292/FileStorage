@@ -35,8 +35,8 @@ namespace WebUI.Controllers
         }
         public ActionResult Delete(Guid id)
         {
-           // fileService.DeleteFile(id);
-            throw new Exception();
+            //throw new Exception();
+            fileService.DeleteFile(id);
             return null;
         }
         [HttpGet]
@@ -47,23 +47,34 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult LoadFiles(HttpPostedFileBase file, string description, bool isPublic)
         {
-            if (file != null && file.ContentLength > 0)
+
+            try
             {
-                var fileName = Path.GetFileName(file.FileName);
-                var contentLength = file.ContentLength;
-                // var contentType = file.ContentType;
-
-                var data = new byte[] { };
-                using (var binaryReader = new BinaryReader(file.InputStream))
+                // throw new Exception();
+                if (file != null && file.ContentLength > 0)
                 {
-                    data = binaryReader.ReadBytes(file.ContentLength);
-                }
-                var newFile = fileService.CreateFileEntity(data, fileName, isPublic,
-                                             userService.FindUserByEmail(User.Identity.Name).Id, contentLength);
-                fileService.SaveFile(newFile);
+                    var fileName = Path.GetFileName(file.FileName);
+                    var contentLength = file.ContentLength;
+                    // var contentType = file.ContentType;
 
+                    var data = new byte[] { };
+                    using (var binaryReader = new BinaryReader(file.InputStream))
+                    {
+                        data = binaryReader.ReadBytes(file.ContentLength);
+                    }
+                    var newFile = fileService.CreateFileEntity(data, fileName, isPublic,
+                                                               userService.FindUserByEmail(User.Identity.Name).Id,
+                                                               contentLength);
+                    fileService.SaveFile(newFile);
+
+                }
+                return RedirectToAction("GetMyFiles");
             }
-            return RedirectToAction("GetMyFiles");
+            catch (Exception)
+            {
+                return View("Error", (object)"LoadFiles");
+            }
+
         }
 
         public ActionResult FindPublicFilesByName(string fileName)

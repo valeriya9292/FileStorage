@@ -17,4 +17,7 @@ fs.controllers.file.prototype = {
         this._model.removeFile(fileId);
         return this;
     },
+    showFileSizeError : function(elem) {
+        this._view.showFileSizeError(elem);
+    }
 };

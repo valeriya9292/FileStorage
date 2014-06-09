@@ -324,11 +324,19 @@ td:last-child
 .css-load-form
 {
     margin: 0 auto;
-    width: 500px;
+    width: 510px;
 }
 
 .css-file-access
 {
     width: 100px;
     margin-top: 15px;
+}
+
+.css-error-page
+{
+    background: url(../Images/error1.jpg) no-repeat center;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
