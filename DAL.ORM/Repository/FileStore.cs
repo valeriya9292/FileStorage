@@ -9,12 +9,7 @@ namespace DAL.ORM.Repository
         {
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
-
-            using (var writer = new StreamWriter(
-                File.Open(string.Format(@"{0}\{1}", path, fileName), FileMode.Create)))
-            {
-                writer.Write(fileBuffer);
-            }
+            File.WriteAllBytes(string.Format(@"{0}\{1}", path, fileName), fileBuffer);
         }
 
         public byte[] Download(string path, string fileName)

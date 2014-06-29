@@ -14,9 +14,6 @@ $(function () {
         if (e.keyCode == 13)
             controller.findFilesByName(this);
     });
-    $(".js-delete-button").click(function () {
-        controller.confirm(this);
-    });
     
     $("#stringForSearch").autocomplete({
         source: function (request, response) {
@@ -28,8 +25,8 @@ $(function () {
         },
     });
 
-    $(".js-edit").click(function() {
-        $(".js-access-select").removeAttr("disabled");
-        $(this).text("Save");
-    });
+    //$(".js-edit").click(function() {
+    //    $(".js-access-select").removeAttr("disabled");
+    //    $(this).text("Save");
+    //});
 });

@@ -8,7 +8,10 @@ fs.views.utils.dialog.prototype = {
             title: title,
             dialogClass: 'css-doubleBtnDialog',
             resizable: false,
-            open: function () { $(".ui-dialog-titlebar-close").hide(); },
+            open: function () {
+                $(".ui-dialog-titlebar-close").hide();
+                $(":button:contains('No')").focus();
+            },
             buttons:
             {
                 'Yes': function (e) {

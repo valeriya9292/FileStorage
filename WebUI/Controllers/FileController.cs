@@ -38,8 +38,17 @@ namespace WebUI.Controllers
         }
         public ActionResult Download(string path, string name)
         {
-            var fileBytes = fileService.Download(path, name);
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, name);
+            try
+            {
+               // throw new Exception();
+                var fileBytes = fileService.Download(path, name);
+                return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, name);
+            }
+            catch (Exception)
+            {
+                return View("Error", (object)Request.UrlReferrer.Segments[2]); 
+            }
+
         }
         public void Delete(Guid id)
         {
@@ -58,7 +67,8 @@ namespace WebUI.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult LoadFiles(HttpPostedFileBase file, string description, bool isPublic)
+        [ValidateAntiForgeryToken]
+        public ActionResult LoadFiles(HttpPostedFileBase file, /*string description,*/ bool isPublic)
         {
 
             try

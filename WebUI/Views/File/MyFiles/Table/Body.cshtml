@@ -24,13 +24,13 @@
                     }
 
                 </select>
-                <a class="css-link-button js-edit">Edit</a>
+            @*    <a class="css-link-button js-edit">Edit</a>*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UploadDate)
             </td>
             <td>
-                <a class="inline css-button js-delete-button">Delete</a>
+                <a class="inline css-button js-delete-button" onclick="controller.confirm(this);">Delete</a>
                 @Html.ActionLink("Load", "Download", new { path = item.Path, name = item.Name }, new { @class = "inline css-button css-orange" })
             </td>
         </tr>

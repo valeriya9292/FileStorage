@@ -1,7 +1,6 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
-using System.Threading;
 using System.Web.Mvc;
 using System.Web.Security;
 using BLL.DomainModel.Services;
@@ -25,6 +24,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(LogInModel viewModel, string returnUrl)
         {
             if (ModelState.IsValid)
@@ -59,6 +59,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel viewModel)
         {
             if (viewModel.Captcha != (string)Session[Infrastructure.Captcha.CaptchaValueKey])

@@ -4,16 +4,17 @@
 
 @using (Html.BeginForm("LoadFiles", "File", FormMethod.Post, new { enctype = "multipart/form-data", @class = "css-load-form js-load-form" }))
 {
+    @Html.AntiForgeryToken()
     <fieldset>
         <legend>Load File:</legend>
         <div>
             <label for="file">Select File:</label>
             <input id="file" name="file" type="file" class="" />
         </div>
-        <div>
+       @* <div>
             <label for="description">Description</label>
             <textarea name="description" cols="50"></textarea>
-        </div>
+        </div>*@
         <div>
             <fieldset>
                 <legend>Access</legend>
