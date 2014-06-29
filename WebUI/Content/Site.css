@@ -20,7 +20,7 @@ body
     color: #1b9cd5;
     text-decoration: none;
 }
-
+    a
 a:active, a:hover
 {
     color: #000000;
@@ -163,6 +163,8 @@ nav li a:hover, nav li .current
     clear: both;
     width: 970px;
     padding: 30px 0;
+    background-color: white;
+    min-height: 100%;
 }
 
 footer
@@ -254,6 +256,7 @@ textarea
 
 .css-button, .css-secondary-button
 {
+    cursor: pointer;
     display: block;
     width: 100px;
     height: 22px;
@@ -305,15 +308,41 @@ textarea
 
 table
 {
-    width: 80%;
-    margin-top: 40px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
+    border-collapse: collapse;
 }
 
-td:last-child
+table, td, th
 {
-    display: inline-flex;
+    word-wrap: break-word;
+}
+
+th
+{
+    padding-bottom: 4px;
+    background-color: green;
+    color: #fff;
+    text-align: left;
+    padding-left: 6px;
+    font-size: 1.4em;
+}
+
+tr:nth-child(even)
+{
+    color: #000;
+    background-color: #EAF2D3;
+}
+
+td
+{
+    max-width: 150px;
+}
+
+.inline
+{
+    display: inline-block;
 }
 
 .css-orange
@@ -339,4 +368,11 @@ td:last-child
     height: 500px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.css-link-button
+{
+    text-decoration: underline;
+    color: red;
+    cursor: pointer;
 }

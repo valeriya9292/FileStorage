@@ -11,14 +11,27 @@
                 @Html.DisplayFor(modelItem => item.Size)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsPublic)
+                <select disabled="disabled" class="js-access-select">
+                    @if (item.IsPublic)
+                    {
+                        <option selected>Public</option>
+                        <option>Private</option>  
+                    }
+                    else
+                    {
+                        <option>Public</option>
+                        <option selected>Private</option>  
+                    }
+
+                </select>
+                <a class="css-link-button js-edit">Edit</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UploadDate)
             </td>
             <td>
-                <a class = "css-button js-delete-button" onclick="controller.confirm(this);">Delete</a>
-                @Html.ActionLink("Load", "Download", new { path = item.Path, name = item.Name }, new { @class = "css-button css-orange" })
+                <a class="inline css-button js-delete-button">Delete</a>
+                @Html.ActionLink("Load", "Download", new { path = item.Path, name = item.Name }, new { @class = "inline css-button css-orange" })
             </td>
         </tr>
     }

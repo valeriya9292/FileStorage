@@ -3,10 +3,11 @@ using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using BLL.DomainModel.Services;
+using System.Linq;
 
 namespace WebUI.Controllers
 {
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User, Admin")]
     public class FileController : Controller
     {
         private readonly FileService fileService;
@@ -29,16 +30,21 @@ namespace WebUI.Controllers
             var files = fileService.FindFilesByOwnerId(userService.FindUserByEmail(User.Identity.Name).Id);//BAD!!!!
             return View(files);
         }
+        [Authorize(Roles = "Admin")]
+        public ActionResult GetUserFiles(Guid userId)
+        {
+            var files = fileService.FindFilesByOwnerId(userId);
+            return View(files);
+        }
         public ActionResult Download(string path, string name)
         {
             var fileBytes = fileService.Download(path, name);
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, name);
         }
-        public ActionResult Delete(Guid id)
+        public void Delete(Guid id)
         {
-            throw new Exception();
+            //throw new Exception();
             fileService.DeleteFile(id);
-            return null;
         }
 
         public bool IsFileExisting(string fileName)
@@ -62,7 +68,7 @@ namespace WebUI.Controllers
                 {
                     var fileName = Path.GetFileName(file.FileName);
                     var contentLength = file.ContentLength;
-                    // var contentType = file.ContentType;
+                    //var contentType = file.ContentType;
 
                     var data = new byte[] { };
                     using (var binaryReader = new BinaryReader(file.InputStream))
@@ -85,6 +91,7 @@ namespace WebUI.Controllers
 
         }
 
+        [AllowAnonymous]
         public ActionResult FindPublicFilesByName(string fileName)
         {
             var files = fileService.FindPublicFilesByName(fileName);
@@ -96,6 +103,26 @@ namespace WebUI.Controllers
             var files = fileService.FindFilesByNameAndOwnerId(fileName,
                 userService.FindUserByEmail(User.Identity.Name).Id);
             return PartialView("MyFiles/Table/Table", files);
+        }
+
+        public ActionResult FindMyFilesForAutoCompl(string fileName)
+        {
+            var files = fileService.FindFilesByNameAndOwnerId(fileName,
+                userService.FindUserByEmail(User.Identity.Name).Id);
+            return Json(files.Select(it => it.Name), JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        public ActionResult FindFilesForAutoCompl(string fileName)
+        {
+            var files = fileService.FindPublicFilesByName(fileName);
+            return Json(files.Select(it => it.Name), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult FindAllFiles()
+        {
+            var files = fileService.FindAllFiles();
+            return View(files);
         }
     }
 }

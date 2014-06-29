@@ -2,3 +2,4 @@ D:\Учёба\ASP.NET MVC\FileStorage\Interfaces\bin\Debug\Interfaces.dll
 D:\Учёба\ASP.NET MVC\FileStorage\Interfaces\bin\Debug\Interfaces.pdb
 D:\Учёба\ASP.NET MVC\FileStorage\Interfaces\obj\Debug\Interfaces.dll
 D:\Учёба\ASP.NET MVC\FileStorage\Interfaces\obj\Debug\Interfaces.pdb
+D:\Учёба\ASP.NET MVC\FileStorage\Interfaces\obj\Debug\Interfaces.csprojResolveAssemblyReference.cache

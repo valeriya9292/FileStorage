@@ -23,6 +23,7 @@ namespace BLL.DomainModel.Services
         {
             return repository.FindAll().Select(item => item.ToFileEntity());
         }
+
         public IEnumerable<FileEntity> FindFilesByOwnerId(Guid ownerId)
         {
             return repository.FindByOwnerId(ownerId).Select(item => item.ToFileEntity());
@@ -35,25 +36,31 @@ namespace BLL.DomainModel.Services
 
         public IEnumerable<FileEntity> FindPublicFilesByName(string fileName)
         {
-            return repository.FindPublic().Where(item => item.Name.Contains(fileName))
-                .Select(item => item.ToFileEntity());
+            return repository.FindPublicByName(fileName).Select(item => item.ToFileEntity());
         }
+
         public IEnumerable<FileEntity> FindFilesByNameAndOwnerId(string fileName, Guid ownerId)
         {
-            return FindFilesByOwnerId(ownerId).Where(item => item.Name.Contains(fileName));
+            return repository.FindByNameAndOwnerId(fileName, ownerId).Select(item => item.ToFileEntity());
         }
+
+
         public void DeleteFile(Guid id)
         {
+            var file = repository.FindById(id);
+            store.Delete(file.Path, file.Name);
             repository.Delete(id);
         }
         public void DeleteFileByOwnerId(Guid ownerId)
         {
             repository.DeleteByOwnerId(ownerId);
         }
+
         public bool IsFileExisting(string fileName, Guid ownerId)
         {
-            return repository.FindByOwnerId(ownerId).Count(item => item.Name.Equals(fileName)) != 0;
+            return repository.FindByAccurNameAndOwnerId(fileName, ownerId).Count() != 0;
         }
+
         public void SaveFile(FileEntity file)
         {
             repository.Save(file.ToDalFile());
@@ -65,22 +72,20 @@ namespace BLL.DomainModel.Services
             return store.Download(path, fileName);
         }
 
-        //NOTE: filePath from Web.config
-        public FileEntity CreateFileEntity(byte[] stream, string fileName, bool isPublic, Guid ownerId, long size, string filePath /*= @"D:\test\out"*/)
+        public FileEntity CreateFileEntity(byte[] stream, string fileName, bool isPublic, Guid ownerId, long size, string filePath)
         {
             var file = new FileEntity()
                 {
-                    Id = Guid.NewGuid(),
+                   // Id = Guid.NewGuid(),
                     Data = stream,
                     Name = fileName,
                     IsPublic = isPublic,
                     OwnerId = ownerId,
-                    Path = filePath,//string.Format(@"{0}\{1}", filePath, User.Email);
+                    Path = filePath,
                     Size = size,
                     UploadDate = DateTime.Now
                 };
             return file;
         }
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using BLL.DomainModel.Services;
 
 namespace WebUI.Controllers
@@ -6,17 +7,21 @@ namespace WebUI.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        private readonly UserService service;
-        public AdminController(UserService service)
+        private readonly UserService userService;
+        public AdminController(UserService userService)
         {
-            this.service = service;
+            this.userService = userService;
         }
 
         public ActionResult FindAllUsers()
         {
-            var users = service.FindAllUsers();
+            var role = "User";
+            var users = userService.FindUsersByRole(role);
             return View(users);
         }
-
+        public void DeleteUser(Guid userId)
+        {
+            userService.DeleteUser(userId);
+        }
     }
 }

@@ -20,6 +20,10 @@ namespace BLL.DomainModel.Services
         {
             return repository.FindAll().Select(item => item.ToUserEntity());
         }
+        public IEnumerable<UserEntity> FindUsersByRole(string roleName)
+        {
+            return repository.FindByRole(roleName).Select(item => item.ToUserEntity());
+        }
         public UserEntity FindUserByEmail(string email)
         {
             return repository.FindAll().Where(item => item.Email.Equals(email))

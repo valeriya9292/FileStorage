@@ -4,5 +4,6 @@
     {
         void Upload(byte[]fileBuffer, string path, string fileName);
         byte[] Download(string path, string fileName);
+        void Delete(string path, string fileName);
     }
 }

@@ -13,8 +13,8 @@
                 @Html.DisplayFor(modelItem => item.UploadDate)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "css-button" })
-                @Html.ActionLink("Load", "Download", new { path = item.Path, name = item.Name }, new { @class = "css-button css-orange" })
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "inline css-button" })
+                @Html.ActionLink("Load", "Download", new { path = item.Path, name = item.Name }, new { @class = "inline css-button css-orange" })
             </td>
         </tr>
     }

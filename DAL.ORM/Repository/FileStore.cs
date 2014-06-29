@@ -21,5 +21,10 @@ namespace DAL.ORM.Repository
         {
             return File.ReadAllBytes(string.Format(@"{0}\{1}", path, fileName));
         }
+
+        public void Delete(string path, string fileName)
+        {
+            File.Delete(string.Format(@"{0}\{1}", path, fileName));
+        }
     }
 }

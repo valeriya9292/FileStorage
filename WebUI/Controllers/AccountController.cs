@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Threading;
 using System.Web.Mvc;
 using System.Web.Security;
 using BLL.DomainModel.Services;
@@ -36,7 +37,8 @@ namespace WebUI.Controllers
                     {
                         return Redirect(returnUrl);
                     }
-                    return User.IsInRole("User") ? RedirectToAction("GetMyFiles", "File") 
+                    var roleProvider = new CustomRoleProvider();
+                    return roleProvider.IsUserInRole(viewModel.Email, "User") ? RedirectToAction("GetMyFiles", "File") 
                         : RedirectToAction("FindAllUsers", "Admin");
                 }
                 ModelState.AddModelError("", "Incorrect email or password");
@@ -92,7 +94,6 @@ namespace WebUI.Controllers
             Session[Infrastructure.Captcha.CaptchaValueKey] = RandomUtil.GetRandomString(4);
             var captcha = new Captcha(Session[Infrastructure.Captcha.CaptchaValueKey].ToString(), 250, 100,
                 FontFamily.Families.ElementAt(/*RandomUtil.GetRandomInt(FontFamily.Families.Length - 1)*/1).Name);
-
             Response.Clear();
             Response.ContentType = "image/jpeg";
             captcha.Image.Save(Response.OutputStream, ImageFormat.Jpeg);

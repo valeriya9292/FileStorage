@@ -30,6 +30,14 @@ namespace WebUI
                        "~/Scripts/views/file.js",
                        "~/Scripts/views/utils/dialog.js"
                        ));
+            bundles.Add(new ScriptBundle("~/bundles/user").Include(
+                       "~/Scripts/base.js",
+                       "~/Scripts/controllers/user.js",
+                       "~/Scripts/model/user.js",
+                       "~/Scripts/model/services/user.js",
+                       "~/Scripts/views/user.js",
+                       "~/Scripts/views/utils/dialog.js"
+                       ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 

@@ -20,6 +20,18 @@ namespace DAL.ORM.Repository
             return users;
         }
 
+        public IEnumerable<DalUser> FindByRole(string roleName)
+        {
+            IEnumerable<DalUser> users;
+            using (var context = new FileStorageDbContext())
+            {
+                users = context.Users.AsEnumerable()
+                    .Where(elem => elem.Role.Name.Equals(roleName))
+                    .Select(elem => elem.ToDalUser()).ToList();
+            }
+            return users;
+        }
+
         public void Delete(Guid id)
         {
             using (var context = new FileStorageDbContext())

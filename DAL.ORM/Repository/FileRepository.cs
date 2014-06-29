@@ -10,6 +10,13 @@ namespace DAL.ORM.Repository
 {
     public class FileRepository : IFileRepository
     {
+        public DalFile FindById(Guid id)
+        {
+            using (var context = new FileStorageDbContext())
+            {
+                return context.Files.FirstOrDefault(f => f.Id == id).ToDalFile();
+            }
+        }
 
         public IEnumerable<DalFile> FindAll()
         {
@@ -36,6 +43,39 @@ namespace DAL.ORM.Repository
                 return context.Files.AsEnumerable()
                     .Where(elem => elem.ToDalFile().IsPublic)
                     .Select(elem => elem.ToDalFile()).ToList();
+            }
+        }
+
+        public IEnumerable<DalFile> FindPublicByName(string fileName)
+        {
+            using (var context = new FileStorageDbContext())
+            {
+                return context.Files.AsEnumerable()
+                              .Where(elem => elem.ToDalFile().IsPublic && elem.Name.Contains(fileName))
+                              .Select(elem => elem.ToDalFile()).ToList();
+
+            }
+        }
+
+        public IEnumerable<DalFile> FindByNameAndOwnerId(string fileName, Guid ownerId)
+        {
+            using (var context = new FileStorageDbContext())
+            {
+                return context.Files.AsEnumerable()
+                              .Where(item => item.Name.Contains(fileName) && item.OwnerId == ownerId)
+                              .Select(item => item.ToDalFile()).ToList();
+
+            }
+        }
+
+        public IEnumerable<DalFile> FindByAccurNameAndOwnerId(string fileName, Guid ownerId)
+        {
+            using (var context = new FileStorageDbContext())
+            {
+                return context.Files.AsEnumerable()
+                              .Where(item => item.Name.Equals(fileName) && item.OwnerId == ownerId)
+                              .Select(item => item.ToDalFile()).ToList();
+
             }
         }
 
@@ -69,6 +109,9 @@ namespace DAL.ORM.Repository
         {
             using (var context = new FileStorageDbContext())
             {
+                var oldFile = context.Files.Where(f => f.Name.Equals(file.Name) && f.Path.Equals(file.Path)).Select(f => f);
+                file.Id = oldFile.Count() != 0 ? oldFile.First().Id : Guid.NewGuid();
+                context.Files.RemoveRange(oldFile);
                 context.Files.Add(file.ToOrmFile());
                 context.SaveChanges();
             }

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<BLL.DomainModel.Entities.FileEntity>
 
 @{
-    ViewBag.Title = "My Files";
+    ViewBag.Title = "User's Files";
 }
 @RenderPage("Search.cshtml")
-<h2>My Files</h2>
+<h2>User Files:</h2>
 <div class="js-table">
     @Html.Partial("MyFiles/Table/Table")
 </div>
